@@ -33,7 +33,7 @@
         "migrate": ["php artisan migrate"],
         "websocker": ["php artisan websocket"],
         "start": ["php -S 127.0.0.1:9000 -t public"],
-        "test": ["./vendor/bin/phpunit"],
+        "test": ["./vendor/bin/phpunit tests"],
         "documentation": ["./vendor/bin/swagger app/ --output public/"]
     },
     "config": {

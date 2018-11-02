@@ -7,10 +7,6 @@ Vue.component("chat-sidepanel", {
                     <p>{{user.username}}</p>
                 </div>
             </div>
-            <div id="search">
-                <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
-                <input type="text" placeholder="Search contacts..." />
-            </div>
             <div id="contacts">
                 <ul>
                     <li class="contact" v-for="contact in contacts" v-on:click="selectContact(contact)" v-bind:class="[{ 'active' : contact.id == currentContact.id }]">
