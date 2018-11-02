@@ -134,9 +134,11 @@ const store = new Vuex.Store({
         },
         scrollMessageBlock: function(store) {
             var container = store.state.messagesBlock;
-            setTimeout(function() {
-                container.scrollTop = container.scrollHeight;
-            }, 10);
+            if (container) {
+                setTimeout(function() {
+                    container.scrollTop = container.scrollHeight;
+                }, 10);
+            }
         }
     }
 });

@@ -64,7 +64,12 @@ Vue.component("chat-content", {
     mounted: function() {
         store.commit("setMessageBlock", this.$refs.messagesBlock);
         store.dispatch("scrollMessageBlock");
-        this.$refs.messagesBlock.addEventListener("scroll", this.handleScroll);
+        if (this.$refs.messagesBlock) {
+            this.$refs.messagesBlock.addEventListener(
+                "scroll",
+                this.handleScroll
+            );
+        }
     },
     methods: {
         handleScroll(event) {
