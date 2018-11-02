@@ -5,6 +5,7 @@ return [
 	'app_origin' => env('APP_ORIGIN', ''),
 	'app_api_origin' => env('APP_API_ORIGIN', ''),
 	'app_dev_origin' => env('APP_DEV_ORIGIN', ''),
+	'log' => env('APP_LOG', 'errorlog'),
 
 	/*
 		    |--------------------------------------------------------------------------
@@ -43,4 +44,5 @@ return [
 		    |
 	*/
 	'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+
 ];
