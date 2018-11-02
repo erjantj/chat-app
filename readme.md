@@ -61,7 +61,7 @@ There are only two models
 All configuration fies stored in config folder. It includes also config for JWT and Websocket service. By default configs set up for local usage. To override defaults just copy `.env.example` file as `.env` and write new configs there.
 
 ### Tests
-App supports unit testing. Tests folder contains all test classes. Database transactions used for databse testing, so no data will be currapted on local server. By far is only messages test. To run tests you can use command:
+App supports unit testing. Tests folder contains all test classes. Database transactions used for databse testing, so no data will be currapted on local server. By far there is only messages test. To run tests you can use command:
 
 ```
 composer test
