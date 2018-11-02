@@ -38,7 +38,7 @@ PHP >= 5.6
 Because of periodically refreshing the page to poll for new messages would be very slow and eat lot of internet traffic I used websockets. App uses simple websocket server on PHP. It provides lighing fast messages delivery and smooth user experience.
 
 ### Migration
-App supports migrations to easy maintain and scale database. Lumen provides out of the box support that. 
+App supports migrations to easy maintain and scale database. Lumen provides out of the box support for that. 
 To create new migration run:
 
 ```
