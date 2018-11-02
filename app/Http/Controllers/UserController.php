@@ -131,7 +131,7 @@ class UserController extends Controller {
 				'username' => $username,
 			];
 
-			if ($token = JWTAuth::attempt($credentials)) {
+			if ($token = JWTAuth::fromUser($user)) {
 				$data = [
 					'user' => $user,
 					'api_key' => $token,
