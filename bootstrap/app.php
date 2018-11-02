@@ -27,6 +27,7 @@ $app->withFacades();
 $app->withEloquent();
 
 $app->configure('app');
+$app->configure('logging');
 $app->configure('auth');
 $app->configure('jwt');
 $app->configure('services');
