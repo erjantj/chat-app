@@ -31,7 +31,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "migrate": ["php artisan migrate"],
-        "websocker": ["php artisan websocket"],
+        "websocket": ["php artisan websocket"],
         "start": ["php -S 127.0.0.1:9000 -t public"],
         "test": ["./vendor/bin/phpunit tests"],
         "documentation": ["./vendor/bin/swagger app/ --output public/"]
