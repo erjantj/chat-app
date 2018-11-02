@@ -1,0 +1,211 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Chat app",
+        "description": "Chat app",
+        "contact": {
+            "email": "yerzhan.torgayev@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/message": {
+            "get": {
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Get messages list",
+                "description": "Return message list for given recipient",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "recipient_id",
+                        "in": "query",
+                        "description": "Recipient id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "User messages"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Create new message",
+                "description": "Creates new message record",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Message"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Message created"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/me": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user data",
+                "description": "Return user data for authorized user",
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "User data"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "List of all contacts",
+                "description": "Return list of all users available",
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "List of contacts"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User login",
+                "description": "User login",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "Username",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Autorization token"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "properties": {
+                "username": {
+                    "description": "username",
+                    "type": "string",
+                    "default": ""
+                }
+            }
+        },
+        "Message": {
+            "properties": {
+                "sender_id": {
+                    "description": "Sender id",
+                    "type": "integer",
+                    "default": ""
+                },
+                "recipient_id": {
+                    "description": "Recipient id",
+                    "type": "integer",
+                    "default": ""
+                },
+                "message": {
+                    "description": "Message",
+                    "type": "string",
+                    "default": ""
+                }
+            }
+        }
+    },
+    "responses": {
+        "UnprocessableEntity": {
+            "description": "Unprocessable Entity"
+        },
+        "Forbidden": {
+            "description": "Forbidden"
+        },
+        "RecordNotFound": {
+            "description": "Record Not Found"
+        }
+    },
+    "securityDefinitions": {
+        "apiKey": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
