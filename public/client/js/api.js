@@ -105,10 +105,8 @@ var Api = {
             );
         };
 
-        Vue.prototype.$logout = function(message) {
-            store.commit("setAuthToken", "");
-            store.commit("setUser", {});
-            store.commit("currentContact", {});
+        Vue.prototype.$logout = function() {
+            localStorage.removeItem("vuex");
         };
     }
 };

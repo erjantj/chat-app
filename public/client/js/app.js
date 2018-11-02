@@ -17,5 +17,12 @@ var app = new Vue({
             return store.state.messages;
         }
     },
-    methods: {}
+    created() {
+        document.addEventListener("beforeunload", this.logout);
+    },
+    methods: {
+        logout: function(event) {
+            this.$logout();
+        }
+    }
 });

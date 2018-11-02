@@ -70,6 +70,7 @@ const store = new Vuex.Store({
     },
     actions: {
         loadContacts: function(state, app) {
+            state.commit("setMessages", []);
             app.$loadContacts()
                 .then(function(response) {
                     state.commit("setContacts", response.data);
