@@ -1,5 +1,5 @@
 var axiosApi = axios.create({
-    baseURL: "http://localhost:9000/api/v1",
+    baseURL: config.base_url || "http://localhost:9000/api/v1",
     timeout: 4000
 });
 var wsUri = "ws://localhost:8000/ws/";
