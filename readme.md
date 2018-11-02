@@ -80,7 +80,7 @@ Authorization: [TOKEN_HERE]
 
 ### User status
 
-User can see who which user is currently online. If user leaves chat, then he becames offline for other online users. 
+User can see which user is currently online. If user leaves chat, then he becomes offline for other online users.
 
 ### Instant messaging
 User can write messages to any user that is available in system. User can scroll over his old messages. User gets notification as new message arrives. Because of websocket server, messaging and online status tracking works instantaneous.
