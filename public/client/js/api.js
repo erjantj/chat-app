@@ -2,7 +2,7 @@ var axiosApi = axios.create({
     baseURL: config.base_url || "http://localhost:9000/api/v1",
     timeout: 4000
 });
-var wsUri = "ws://localhost:8000/ws/";
+var wsUri = config.websocket_url || "ws://localhost:8000/ws/";
 var wsFormat = ["json"];
 var isReconnect = true;
 
