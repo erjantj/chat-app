@@ -30,7 +30,7 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "migrate": ["php artisan migrate"],
+        "migrate": [" touch database.sqlite && php artisan migrate"],
         "websocket": ["php artisan websocket"],
         "start": ["php -S 127.0.0.1:9000 -t public"],
         "test": ["./vendor/bin/phpunit tests"],
