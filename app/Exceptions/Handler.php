@@ -19,7 +19,6 @@ class Handler extends ExceptionHandler {
 	 */
 	protected $dontReport = [
 		AuthorizationException::class,
-		ModelNotFoundException::class,
 		ValidationException::class,
 	];
 
@@ -56,6 +55,13 @@ class Handler extends ExceptionHandler {
 		} else if ($exception instanceof JWTException) {
 			$message = 'Token does not exists';
 			$status = 401;
+
+			if ($exception->getMessage()) {
+				$message = $exception->getMessage();
+			}
+		} else if ($exception instanceof ModelNotFoundException) {
+			$message = 'Record not found';
+			$status = 404;
 
 			if ($exception->getMessage()) {
 				$message = $exception->getMessage();

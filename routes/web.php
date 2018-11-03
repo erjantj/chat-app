@@ -24,4 +24,7 @@ $router->group([
 
 	$router->get('/message', 'MessageController@all');
 	$router->post('/message', 'MessageController@create');
+	$router->put('/message/{messageId}', 'MessageController@update');
+	$router->delete('/message/{messageId}', 'MessageController@delete');
+
 });

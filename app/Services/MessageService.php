@@ -24,6 +24,37 @@ class MessageService {
 	}
 
 	/**
+	 * Delete message
+	 * @param  User    $user author user
+	 * @param  integer $messageId message id
+	 * @return boolean
+	 */
+	public function delete($user, $messageId) {
+		$message = Message::query()
+			->where('sender_id', '=', $user->id)
+			->findOrFail($messageId);
+
+		return $message->delete();
+	}
+
+	/**
+	 * Update message
+	 * @param  User    $user author user
+	 * @param  integer $messageId message id
+	 * @param  string  $newMessage new message
+	 * @return boolean
+	 */
+	public function update($user, $messageId, $newMessage) {
+		$message = Message::query()
+			->where('sender_id', '=', $user->id)
+			->findOrFail($messageId);
+
+		$message->message = $newMessage;
+
+		return $message->save();
+	}
+
+	/**
 	 * All message for given recipient
 	 * @param  User    $user        author
 	 * @param  integer $recipientId id of recipient user

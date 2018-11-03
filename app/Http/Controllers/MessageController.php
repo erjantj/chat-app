@@ -66,6 +66,97 @@ class MessageController extends Controller {
 	}
 
 	/**
+	 * @SWG\Delete(
+	 *     path="/message/{messageId}",
+	 *     tags={"Message"},
+	 *     summary="Delete message",
+	 *     description="Deletes message record",
+	 *     consumes={"application/json"},
+	 *     @SWG\Response(
+	 *         response="default",
+	 *         description="Message deleted",
+	 *     ),
+	 *     @SWG\Parameter(
+	 *         name="messageId",
+	 *         in="path",
+	 *         required=true,
+	 *         description="Message id",
+	 *         type="integer",
+	 *     ),
+	 *     @SWG\Response(
+	 *         response=403,
+	 *         description="Forbidden",
+	 *     ),
+	 *     security={{
+	 *         "apiKey": {}
+	 *     }}
+	 * )
+	 *
+	 * Delete message
+	 *
+	 * @param  Request  $request request
+	 * @return string   json response
+	 */
+	public function delete(Request $request, MessageService $messageService, $messageId) {
+		$user = Auth::user();
+		if ($messageService->delete($user, $messageId)) {
+			return response()->json();
+		}
+
+		abort(422, 'Problem deleting message');
+	}
+
+	/**
+	 * @SWG\Put(
+	 *     path="/message/{messageId}",
+	 *     tags={"Message"},
+	 *     summary="Update message",
+	 *     description="Updates message record",
+	 *     consumes={"application/json"},
+	 *     @SWG\Response(
+	 *         response="default",
+	 *         description="Message deleted",
+	 *     ),
+	 *     @SWG\Parameter(
+	 *         name="messageId",
+	 *         in="path",
+	 *         required=true,
+	 *         description="Message id",
+	 *         type="integer",
+	 *     ),
+	 *     @SWG\Parameter(
+	 *         name="message",
+	 *         in="query",
+	 *         required=true,
+	 *         description="New message",
+	 *         type="string",
+	 *     ),
+	 *     @SWG\Response(
+	 *         response=403,
+	 *         description="Forbidden",
+	 *     ),
+	 *     security={{
+	 *         "apiKey": {}
+	 *     }}
+	 * )
+	 *
+	 * Updates message
+	 *
+	 * @param  Request  $request request
+	 * @return string   json response
+	 */
+	public function update(Request $request, MessageService $messageService, $messageId) {
+		$user = Auth::user();
+		$this->validateUpdate($request);
+		$newMessage = $request->input('message');
+		if ($messageService->update($user, $messageId, $newMessage)) {
+			return response()->json();
+		}
+
+		abort(422, 'Problem updating message');
+	}
+
+	/**
 	 * @SWG\Get(
 	 *     path="/message",
 	 *     tags={"Message"},
@@ -116,6 +207,16 @@ class MessageController extends Controller {
 		$this->validate($request, [
 			'message' => 'required|max:4000',
 			'recipient_id' => 'required|exists:user,id',
+		]);
+	}
+
+	/**
+	 * Validate message update params
+	 * @param  Request $request request object
+	 */
+	private function validateUpdate($request) {
+		$this->validate($request, [
+			'message' => 'required|max:4000',
 		]);
 	}
 

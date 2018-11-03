@@ -80,6 +80,79 @@
                 ]
             }
         },
+        "/message/{messageId}": {
+            "put": {
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Update message",
+                "description": "Updates message record",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "path",
+                        "description": "Message id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "New message",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Message deleted"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Delete message",
+                "description": "Deletes message record",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "messageId",
+                        "in": "path",
+                        "description": "Message id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Message deleted"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
         "/me": {
             "get": {
                 "tags": [
