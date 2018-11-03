@@ -38,7 +38,7 @@ PHP >= 5.6
 Because of periodically refreshing the page to poll for new messages would be very slow and eat lot of internet traffic I used websockets. App uses simple websocket server on PHP. It provides lighing fast messages delivery and smooth user experience.
 
 ### Migration
-App supports migrations to easy maintain and scale databse. Lumen provides out of the box support that. 
+App supports migrations to easy maintain and scale database. Lumen provides out of the box support for that. 
 To create new migration run:
 
 ```
@@ -61,7 +61,7 @@ There are only two models
 All configuration fies stored in config folder. It includes also config for JWT and Websocket service. By default configs set up for local usage. To override defaults just copy `.env.example` file as `.env` and write new configs there.
 
 ### Tests
-App supports unit testing. Tests folder contains all test classes. Database transactions used for databse testing, so no data will be currapted on local server. By far is only messages test. To run tests you can use command:
+App supports unit testing. Tests folder contains all test classes. Database transactions used for databse testing, so no data will be currapted on local server. By far there is only messages test. To run tests you can use command:
 
 ```
 composer test
@@ -80,7 +80,7 @@ Authorization: [TOKEN_HERE]
 
 ### User status
 
-User can see who which user is currently online. If user leaves chat, then he becames offline for other online users. 
+User can see which user is currently online. If user leaves chat, then he becomes offline for other online users.
 
 ### Instant messaging
 User can write messages to any user that is available in system. User can scroll over his old messages. User gets notification as new message arrives. Because of websocket server, messaging and online status tracking works instantaneous.
